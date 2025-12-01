@@ -1,0 +1,215 @@
+/* --- VARIABLES --- */
+:root {
+  --verde: #2e7d32;
+  --verde-oscuro: #1b5e20;
+  --gris-claro: #f9fafb;
+  --borde: #e0e0e0;
+  --sombra: rgba(0, 0, 0, 0.08);
+  --fuente: "Montserrat", sans-serif;
+}
+
+/* --- BASE --- */
+body {
+  font-family: var(--fuente);
+  background-color: var(--gris-claro);
+  margin: 0;
+  color: #333;
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.marketplace {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+/* --- FILTROS --- */
+.filtros {
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px var(--sombra);
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+  border: 1px solid var(--borde);
+}
+
+.filtros h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: var(--verde-oscuro);
+  text-align: center;
+}
+
+.filtros form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filtros label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.filtros select,
+.filtros input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.filtros select:focus,
+.filtros input:focus {
+  border-color: var(--verde);
+  outline: none;
+}
+
+.filtros button {
+  background-color: var(--verde);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.filtros button:hover {
+  background-color: var(--verde-oscuro);
+}
+
+/* --- SECCIÓN PRODUCTOS --- */
+.productos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px var(--sombra);
+  border: 1px solid var(--borde);
+}
+
+.top-bar h2 {
+  font-size: 1.4rem;
+  color: var(--verde-oscuro);
+  font-weight: 600;
+}
+
+.crear-subasta {
+  background-color: var(--verde);
+  color: white;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.crear-subasta:hover {
+  background-color: var(--verde-oscuro);
+  transform: translateY(-2px);
+}
+
+/* --- PRODUCTOS / SUBASTAS --- */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.tarjeta {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--sombra);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--borde);
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 16px var(--sombra);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.tarjeta h3 {
+  margin: 0.8rem 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.tarjeta p {
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  margin: 0.3rem 0 1rem;
+}
+
+.show-more {
+  background-color: var(--verde);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.show-more:hover {
+  background-color: var(--verde-oscuro);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .marketplace {
+    grid-template-columns: 1fr;
+  }
+
+  .filtros {
+    order: -1; /* Mueve los filtros arriba */
+    position: static;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .crear-subasta {
+    width: 100%;
+  }
+
+  .productos {
+    grid-template-columns: 1fr;
+  }
+}

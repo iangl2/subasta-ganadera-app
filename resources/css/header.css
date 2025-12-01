@@ -1,0 +1,118 @@
+
+/* Paleta personalizada */
+:root {
+  --color-green-dark: #28430a;
+  --color-green-mid: #507b00;
+  --color-green-light: #95c22b;
+  --color-green-bright: #a7d930;
+  --color-brown: #7b4425;
+
+  --color-primary: var(--color-green-mid);
+  --color-secondary: var(--color-green-light);
+  --color-accent: var(--color-green-bright);
+  --color-bg: var(--color-green-dark);
+  --color-surface: #fff;
+  --color-text: #28430a;
+  --color-text-white: #fff;
+  --color-header-bg: var(--color-green-dark);
+  --color-header-scroll: var(--color-green-mid);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Header/Nav Styles --- */
+#header {
+  position: relative; /* Ya no es absoluto */
+  width: 100%;
+  background: var(--color-green-dark); /* Fondo verde oscuro */
+  box-shadow: none;
+  z-index: 20;
+}
+
+.navbar {
+  
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2em 2em;
+  background: transparent; /* El nav no tiene fondo */
+  z-index: 21;
+}
+
+.brand img {
+  height: 4em;
+  max-width: 160px;
+  transition: transform 0.2s;
+}
+
+.brand img:hover {
+  transform: scale(1.05);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  list-style: none;
+}
+
+.menu-link {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-text-white);
+  font-weight: 600;
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+  background: var(--color-green-mid);
+  color: var(--color-accent);
+}
+
+.menu-block.btn {
+  background: var(--color-accent);
+  color: var(--color-green-dark);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu-block.btn:hover,
+.menu-block.btn:focus {
+  background: var(--color-green-mid);
+  color: var(--color-text-white);
+}
+
+/* Responsive Nav */
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em 1em;
+  }
+  .menu {
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    margin-top: 1em;
+  }
+  .menu-link,
+  .menu-block.btn {
+    width: 100%;
+    text-align: left;
+  }
+}
