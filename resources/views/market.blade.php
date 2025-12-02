@@ -3,8 +3,9 @@
 @section('title', 'Mercado')
 
 @section('content')
-       @vite(['resources/css/market.css', 'resources/js/app.js'])
-<main class="marketplace" x-data="{ openAuctionModal: false }">>
+       @vite(['resources/css/market.css', 'resources/js/app.js', 'resources/js/modal.js'])
+
+<main class="marketplace" >
   <aside class="filtros">
     <h2>Filtros</h2>
     <form>
@@ -22,11 +23,10 @@
         <input type="number" name="precio" placeholder="Ej. 2000" />
       </label>
 
-      <button type="submit"  @click="openAuctionModal = true">Aplicar</button>
-        <x-modal-create-auction />
+      <button type="submit"  >Aplicar</button>
     </form>
   </aside>
-
+  
   <section class="productos-section">
     <div class="top-bar">
       <h2>Subastas disponibles</h2>
@@ -36,9 +36,10 @@
     <div class="productos">
               @foreach($auctions as $auction)
             @include('components.auction-card', ['auction' => $auction])
-        @endforeach
+            @endforeach
     </div>
   </section>
+  <x-modal-create-auction />
 </main>
 
 @endsection

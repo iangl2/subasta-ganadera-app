@@ -3,28 +3,26 @@
 
 
 <div 
-    x-show="openAuctionModal"
     x-transition.opacity
-    class="fixed inset-0 z-40 flex justify-center items-center bg-black bg-opacity-50"
+    class="wrapper"
 >
     <div 
-        x-show="openAuctionModal"
         x-transition
-        class="wrapper bg-white shadow-xl rounded-lg p-6 relative w-[500px]"
+        class="login_box"
     >
 
         <!-- Botón cerrar -->
         <button 
             @click="openAuctionModal = false"
-            class="absolute right-3 top-3 text-3xl"
+            id="close-modal"
         >&times;</button>
 
-        <div class="login-header mb-4">
-            <span class="text-xl font-bold">Registrar Subasta</span>
+        <div class="login-header">
+            <span >Registrar Subasta</span>
         </div>
 
         <!-- FORM -->
-        <form method="POST" action="{{ route('auctions.store') }}" class="form-grid space-y-4">
+        <form class="form-grid" method="POST" action="{{ route('auctions.store') }}" >
             @csrf
 
             <div class="input_box">
@@ -67,7 +65,7 @@
             </div>
 
             <div class="input_box submit-box">
-                <button class="input-submit bg-blue-600 text-white py-2 w-full rounded">
+                <button class="input-submit">
                     Registrar Subasta
                 </button>
             </div>
