@@ -12,14 +12,36 @@
                     <li class="menu-item"><a href="/" class="menu-link">Inicio</a></li>
                     <li class="menu-item"><a href="/market" class="menu-link">Subastas</a></li>
                     <li class="menu-item"><a href="#" class="menu-link">Noticias</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Contacto</a></li>
                     <li class="menu-item">
-
-                        <a href="#" class="">
+ @guest
+                        <a href="/login" class="">
                             <button type="button" class="menu-block btn btn-neutral">
-                                Registrarse
+                                Ingresar
                             </button>
                         </a>
+                        @endguest
+                                        @auth
+                    <li class="menu-item user-dropdown">
+                        <button class="user-button">
+                            {{ auth()->user()->name }}
+                            <span class="arrow">▼</span>
+                        </button>
+
+                        <ul class="dropdown-menu">
+                            <li><a 
+                                {{-- href="{{ route('profile.show') }}" --}}
+                                >Ver perfil</a></li>
+
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="logout-btn">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    @endauth
+
                     </li>
                 </ul>
            

@@ -1,0 +1,357 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Montserrat:wght@400;700&display=swap");
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.auction_details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  gap: 100px;
+}
+
+.animal_details {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.animal_details img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+} 
+
+.animal_details img.moo_picture {
+  width: 500px;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  flex: 0 0 auto;
+  background: #fff;
+}
+
+
+
+.animal_table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 500px;
+  table-layout: fixed;  
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.animal_table thead tr {
+  background-color: #507b00;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 10px;
+}
+
+.animal_table th,
+.animal_table td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;       
+  word-break: break-word;
+}
+
+.animal_table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.animal_table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.animal_table tbody tr:last-of-type {
+    border-bottom: 2px solid #507b00;
+}
+
+.details {
+  width: 35%;
+  margin-top: 40px;
+}
+
+.auction_name {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
+}
+
+.auction_name h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.auction_name p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+
+
+.price {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;       
+  gap: .5em;                
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+
+.price span {
+  font-size: 1em;
+  font-weight: 300;
+  color: #000000; 
+}
+
+.price h2 {
+  margin: 0;
+  font-size: 1.5em; 
+  color: #000000;
+}
+
+.bid {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.bid input[type="number"] {
+  padding: 12px 16px;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+.btn_pujar {
+  margin-top: 8px;
+  display: inline-block;
+  background-color: #507b00;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-top: 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .5s;
+}
+.btn_pujar:hover {
+  background-color: #64af3d;
+}
+
+.countdown {
+  display: flex;
+  gap: 10px;
+}
+
+.time-section{
+  text-align: center;
+  font-size: 2em;
+}
+
+.time-group{
+  display: flex;
+  gap: 3px;
+}
+
+.time-segment{
+  display: block;
+  font-size: .8em;
+  font-weight: 900;
+  width: 1em;
+}
+
+.segment-display{
+  position: relative;
+  height: 100%;
+}
+
+.segment-display-top, .segment-display-bottom{
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  position: relative;
+}
+
+.segment-display-top{
+  background-color: #507b00;
+  color: #eee;
+  line-height: 1.5;
+}
+
+.segment-display-bottom{
+  background-color: #5E8C31;
+  color: #fff;
+  line-height: 0;
+}
+
+.segment-overlay{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1em;
+  perspective: 400px;
+}
+
+.segment-overlay-top, .segment-overlay-bottom{
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+}
+
+.segment-overlay-top{
+  top: 0;
+  line-height: 1.5;
+  color: #eee;
+  background-color: #507b00;
+  transform-origin: bottom;
+}
+
+.segment-overlay-bottom{
+  bottom: 0;
+  line-height: 0;
+  color: #fff;
+  background-color: #5E8C31;
+  border-top: 1px solid black;
+  transform-origin: top;
+}
+
+.segment-overlay.flip .segment-overlay-top{
+  animation: flip-top 0.8s linear;
+}
+
+.segment-overlay.flip .segment-overlay-bottom{
+  animation: flip-bottom 0.8s linear;
+}
+
+@keyframes flip-top{
+  0% {
+    transform: rotateX(0deg);
+  }
+  50%, 100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flip-bottom{
+  0%, 50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+
+.time-section::after {
+  display: block;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #3a3a3a;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Spanish labels per section id */
+#days::after    { content: "Días"; }
+#hours::after   { content: "Horas"; }
+#minutes::after { content: "Minutos"; }
+#seconds::after { content: "Segundos"; }
+
+/* Responsive tweak: slightly smaller labels on very small screens */
+@media (max-width: 420px) {
+  .time-section::after {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 940px) {
+  .auction_details {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+ 
+  .animal_image,
+  .details {
+    width: 100%;
+  }
+ 
+  .animal_image img {
+    width: 300px;
+    right: 0;
+    top: -65px;
+    left: initial;
+  }
+  .animal_details {
+    width: 100%;
+    align-items: center;
+  }
+  .animal_details img.moo_picture,
+  .animal_table {
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+  }
+  .animal_table {
+    table-layout: auto;
+  }
+}
+ 
+@media (max-width: 535px) {
+  .animal_image img {
+    width: 220px;
+    top: -85px;
+  }
+}
+
+@media (max-width: 600px) {
+  .price {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .btn_pujar {
+    width: 100%;
+    text-align: center;
+  }
+}

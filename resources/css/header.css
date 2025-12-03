@@ -23,6 +23,85 @@
   padding: 0;
 }
 
+
+/* === Dropdown del usuario === */
+.user-dropdown {
+  position: relative;
+}
+
+/* Botón con el nombre del usuario */
+.user-button {
+  background: transparent;
+  border: none;
+  color: var(--color-text-white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.user-button:hover {
+  background: var(--color-green-mid);
+  color: var(--color-accent);
+}
+
+.arrow {
+  font-size: 0.8em;
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  top: 2em;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-green-light);
+  border-radius: 6px;
+  list-style: none;
+  padding: 0.5em 0;
+  min-width: 160px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.25);
+  z-index: 999;
+}
+
+/* Items del dropdown */
+.dropdown-menu li a,
+.dropdown-menu li .logout-btn {
+  display: block;
+  width: 100%;
+  padding: 0.7em 1em;
+  text-decoration: none;
+  font-size: 0.95em;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li .logout-btn:hover {
+  background: var(--color-green-light);
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+/* Mostrar dropdown con hover */
+.user-dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+
+
 /* --- Header/Nav Styles --- */
 #header {
   position: relative; /* Ya no es absoluto */
@@ -86,7 +165,7 @@
   border-radius: 6px;
   padding: 0.5em 1.2em;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.1em;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
