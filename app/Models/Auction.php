@@ -24,4 +24,13 @@ class Auction extends Model
     public function bids() {
         return $this->hasMany(Bid::class, 'auction_id');
     }
+    public function getHighestBidAttribute()
+{
+    // Si no hay pujas, devuelve el precio inicial
+    if ($this->bids->isEmpty()) {
+        return $this->starting_price;
+    }
+
+    return $this->bids->max('amount');  // Usa el campo donde guardas el monto de la puja
+}
 }
