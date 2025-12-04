@@ -3,7 +3,7 @@
 @section('title', 'Mercado')
 
 @section('content')
-@vite(['resources/css/auction_styles.css', 'resources/js/app.js', 'resources/js/countdown.js'])
+@vite(['resources/css/auction_styles.css', 'resources/js/app.js', 'resources/js/countdown.js', 'resources/css/bid-success.css'])
 
 <main class="auction_details">
 
@@ -158,12 +158,54 @@
             <span>Puja más reciente</span>
             <h2>${{ $auction->highest_bid ?? $auction->starting_price }}</h2> 
         </div>
+@php
+    use Carbon\Carbon;
+    $ended = Carbon::now()->greaterThan(Carbon::parse($auction->end_date));
+@endphp
 
-        <!-- INPUT DE PUJA -->
-        <div class="bid">
-            <input type="number" id="bid_amount" name="bid_amount" placeholder="Ingresa tu puja">
-            <a class="btn_pujar" href="#">Pujar Ahora</a> 
-        </div>
+<!-- mensajes flash -->
+@if(session('success'))
+    <div class="alert alert-success confetti">{{ session('success') }}</div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
+
+<div class="bid">
+    <form method="POST" action="{{ route('auction.placeBid', $auction->id) }}">
+        @csrf
+
+        <label for="bid_amount">Ingresa tu puja</label>
+        <input
+            type="number"
+            id="bid_amount"
+            name="amount"
+            step="0.01"
+            min="0.01"
+            value="{{ old('amount') }}"
+            @if($ended) disabled @endif
+            required
+        >
+
+        @error('amount')
+            <div class="field-error">{{ $message }}</div>
+        @enderror
+
+        <button
+            type="submit"
+            class="btn_pujar"
+            @if($ended) disabled title="La subasta finalizó" @endif
+        >
+            Pujar Ahora
+        </button>
+    </form>
+
+    @if($ended)
+        <p class="muted">La subasta ha finalizado.</p>
+    @endif
+</div>
+
 
     </div>
 

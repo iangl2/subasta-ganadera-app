@@ -36,7 +36,7 @@
             </div>
 
             <div class="input_box">
-                <input type="datetime-local" name="start_date" class="input-field" required>
+                <input type="datetime-local" name="end_date" class="input-field" required>
                 <label class="label">Fecha</label>
             </div>
 
@@ -54,6 +54,11 @@
                 <input type="text" name="breed" class="input-field" required>
                 <label class="label">Raza</label>
             </div>
+             <div class="input_box">
+                <input type="number" name="starting_price" class="input-field" required>
+                <label class="label">Precio Inicial</label>
+            </div>
+
 
             <div class="input_box">
                 <select name="sex" class="input-field" required>

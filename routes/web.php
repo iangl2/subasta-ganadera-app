@@ -28,5 +28,6 @@ Route::get('/market/{id}', [ MarketController::class, 'auction'])->name('auction
 Route::post('/auctions', [App\Http\Controllers\AuctionController::class, 'store'])
     ->name('auctions.store');
 
-
-
+Route::post('/auction/{id}/bid', [MarketController::class, 'placeBid'])
+    ->name('auction.placeBid')
+    ->middleware('auth'); // requiere usuario logueado
