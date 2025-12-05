@@ -31,3 +31,14 @@ Route::post('/auctions', [App\Http\Controllers\AuctionController::class, 'store'
 Route::post('/auction/{id}/bid', [MarketController::class, 'placeBid'])
     ->name('auction.placeBid')
     ->middleware('auth'); // requiere usuario logueado
+
+
+Route::get('/news', function () {
+    return view('news');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+

@@ -11,7 +11,7 @@
                 <ul class="menu">
                     <li class="menu-item"><a href="/" class="menu-link">Inicio</a></li>
                     <li class="menu-item"><a href="/market" class="menu-link">Subastas</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Noticias</a></li>
+                    <li class="menu-item"><a href="/news" class="menu-link">Noticias</a></li>
                     <li class="menu-item">
  @guest
                         <a href="/login" class="">
@@ -29,7 +29,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a 
-                                {{-- href="{{ route('profile.show') }}" --}}
+                                href="/profile"
                                 >Ver perfil</a></li>
 
                             <li>
