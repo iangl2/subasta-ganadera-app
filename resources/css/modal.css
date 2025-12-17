@@ -27,7 +27,7 @@ a:hover {
 .login_box {
 
   width: 70vw;
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(90px);
   border: 2px solid var(--primary-color);
   border-radius: 15px;
   padding: 7.5em 2.5em 4em 2.5em;
@@ -76,7 +76,8 @@ a:hover {
 }
 .login-header span {
   font-size: 1.25em;
-  color: var(--black-color);
+  font-weight: 300;
+  color: #000000;
 }
 .login-header::before {
   content: "";

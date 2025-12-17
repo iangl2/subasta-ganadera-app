@@ -1,4 +1,3 @@
-
 .confetti{
 		--animation_speed : 40s;
 		--paper_color1:#a4d6f3;
@@ -7,6 +6,9 @@
 		--paper_color4:#0000ff;
 		--paper_color5:#ffb000;
 		--paper_color6:#ff00e0;
+		position: relative;
+		width: 100px;
+		height: 150px;
 	}
 
 	.confetti::before{
@@ -50,4 +52,16 @@
 		background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%,0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
 		}
 	}
+
+/* wrapper para centrar el confetti en pantalla */
+.confetti-wrapper{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 9999;
+    background: transparent;
+}
 

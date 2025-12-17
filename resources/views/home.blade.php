@@ -31,75 +31,43 @@
 
         <!-- Upcoming Events (sin cambios) -->
         <section id="upcoming-events" aria-labelledby="events-heading">
-            <h2 id="events-heading">Próximos Eventos</h2>
-            <ul class="events-list articles">
-                <li>
-                  <article class="event-article">
-                    <div class="event-article-wrapper">
-                      <figure class="event-figure">
-                        <img class="event-img" src="{{ asset('img/Vacas-lecheras.png') }}" alt="Subasta de Vacas Lecheras en Rancho El Buen Pastor" />
-                      </figure>
-                      <div class="event-body">
-                        <h2 class="event-title">Subasta de Vacas Lecheras</h2>
-                        <p class="event-info">
-                          Fecha: <time datetime="2025-10-15">15 de Octubre, 2025</time><br>
-                          Lugar: <span class="event-address">Rancho El Buen Pastor</span>
-                        </p>
-                        <a href="subasta-vacas.html" class="event-read-more">
-                          Ver detalles <span class="sr-only">de Subasta de Vacas Lecheras</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article class="event-article">
-                    <div class="event-article-wrapper">
-                      <figure class="event-figure">
-                        <img class="event-img" src="{{ asset('img/Vacas.jpg') }}" alt="Subasta de Ganado Bovino en Hacienda La Esperanza" />
-                      </figure>
-                      <div class="event-body">
-                        <h2 class="event-title">Subasta de Ganado Bovino</h2>
-                        <p class="event-info">
-                          Fecha: <time datetime="2025-11-22">22 de Noviembre, 2025</time><br>
-                          Lugar: <span class="event-address">Hacienda La Esperanza</span>
-                        </p>
-                        <a href="subasta-bovino.html" class="event-read-more">
-                          Ver detalles <span class="sr-only">de Subasta de Ganado Bovino</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article class="event-article">
-                    <div class="event-article-wrapper">
-                      <figure class="event-figure">
-                        <img class="event-img" src="{{ asset('img/ImgOvinos.webp') }}" alt="Subasta de Ganado Ovino en Granja Los Pastores" />
-                      </figure>
-                      <div class="event-body">
-                        <h2 class="event-title">Subasta de Ganado Ovino</h2>
-                        <p class="event-info">
-                          Fecha: <time datetime="2025-11-30">30 de Noviembre, 2025</time><br>
-                          Lugar: <span class="event-address">Granja Los Pastores</span>
-                        </p>
-                        <a href="subasta-ovinos.html" class="event-read-more">
-                          Ver detalles <span class="sr-only">de Subasta de Ganado Ovino</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-            </ul>
+          <section id="featured-auctions">
+             <h2 id="events-heading">Subastas activas</h2>
+
+<div class="auction-carousel">
+    <div class="auction-carousel-track">
+        @forelse ($auctions as $auction)
+            <div class="auction-card">
+               @php
+                    $imageUrl = $auction->cow->image
+                        ? Storage::disk('s3')->url($auction->cow->image)
+                        : asset('img/placeholder.jpg');
+                @endphp
+                <img class="auction-image" src="{{ $imageUrl }}" alt="{{ $auction->name }}">
+
+                <h3>{{ $auction->cow->breed }}</h3>
+
+                <p>
+                    Peso: {{ $auction->cow->weight }} kg <br>
+                    Sexo: {{ ucfirst($auction->cow->gender) }}
+                </p>
+
+                <p class="price">
+                    Puja actual: ${{ number_format($auction->highest_bid, 2) }}
+                </p>
+
+                <a href="{{ route('auction', $auction->id) }}">
+                    Ver subasta
+                </a>
+            </div>
+        @empty
+            <p>No hay subastas activas en este momento.</p>
+        @endforelse
+    </div>
+</div>
+
+</section>
+
         </section>
 
 

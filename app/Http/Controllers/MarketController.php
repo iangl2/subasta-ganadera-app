@@ -47,7 +47,7 @@ class MarketController extends Controller
     }
 
     $auctions = $query
-        ->paginate(6)
+        ->paginate(9)
         ->withQueryString(); // ⬅ mantiene filtros al paginar
 
     return view('market', compact('auctions'));
@@ -92,7 +92,7 @@ public function placeBid(Request $request, $id)
         'bid_date' => now(),
     ]);
 
-    return back()->with('success', 'Puja registrada correctamente.');
+    return back()->with('success', '¡Registro de puja exitoso!');
 }
 
 }

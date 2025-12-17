@@ -18,7 +18,8 @@
         >&times;</button>
 
         <div class="login-header">
-            <span >Registrar Subasta</span>
+            <span >
+                Registrar Subasta</span>
         </div>
 
         <!-- FORM -->

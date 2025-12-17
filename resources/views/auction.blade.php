@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Mercado')
 
@@ -175,10 +175,6 @@
     $ended = Carbon::now()->greaterThan(Carbon::parse($auction->end_date));
 @endphp
 
-<!-- mensajes flash -->
-@if(session('success'))
-    <div class="alert alert-success confetti">{{ session('success') }}</div>
-@endif
 
 @if(session('error'))
     <div class="alert alert-danger">{{ session('error') }}</div>
@@ -210,19 +206,25 @@
         <button
             type="submit"
             class="btn_pujar"
+            data-auction="{{ $auction->id }}"
             @if($ended) disabled title="La subasta finalizó" @endif
         >
             Pujar Ahora
         </button>
     </form>
 
-    @if($ended)
-        <p class="muted">La subasta ha finalizado.</p>
+    <!-- mensajes flash -->
+    @if(session('success'))
+    <div class="alert alert-success confetti">{{ session('success') }}</div>
     @endif
+    
 </div>
 
 
-    </div>
+</div>
+@if($ended)
+    <p class="muted">La subasta ha finalizado.</p>
+@endif
 
 </main>
 @endsection
