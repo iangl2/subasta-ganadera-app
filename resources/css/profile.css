@@ -23,6 +23,8 @@ body {
 
 /* CARD */
 .profile-card {
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
     overflow: hidden;
     background: #fff;
@@ -45,7 +47,6 @@ body {
     text-align: center;
     padding: 20px 0;
     min-height: 400px; /* Altura mínima en lugar de fija */
-    height: 100%; /* Se ajusta al contenedor padre */
 }
 
 .profile-image-wrapper {
