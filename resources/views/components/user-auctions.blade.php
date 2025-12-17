@@ -1,5 +1,13 @@
+    @php
+    use Illuminate\Support\Facades\Storage;
+
+    $imageUrl = $userAuction->cow->image
+        ? Storage::disk('s3')->url($userAuction->cow->image)
+        : asset('img/placeholder.jpg'); // opcional
+@endphp
+
 <article class="tarjeta">
-    <img src="{{ asset('storage/' . $userAuction->cow->image) }}" 
+    <img src="{{ $imageUrl }}" 
          alt="{{ $userAuction->name }}">
 
     <h3>{{ $userAuction->name }}</h3>
