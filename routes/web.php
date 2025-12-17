@@ -5,6 +5,7 @@ use App\Http\Controllers\MarketController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -39,5 +40,9 @@ Route::get('/news', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/profile', [ProfileController::class, 'index'])
+    ->middleware('auth')
+    ->name('profile');
 
 
