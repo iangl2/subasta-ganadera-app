@@ -5,12 +5,24 @@
 @section('content')
 @vite(['resources/css/auction_styles.css', 'resources/js/app.js', 'resources/js/countdown.js', 'resources/css/bid-success.css'])
 
+@php
+    use Illuminate\Support\Facades\Storage;
+
+    $cowImage = $auction->cow->image
+        ? Storage::disk('s3')->url($auction->cow->image)
+        : asset('img/placeholder.jpg');
+@endphp
+
 <main class="auction_details">
 
     <!-- DATOS DEL ANIMAL -->
     <div class="animal_details">
 
-        <img class="moo_picture" src="/img/Vacas-lecheras.png" alt="Subasta de Vacas Lecheras"/>
+       <img
+    class="moo_picture"
+    src="{{ $cowImage }}"
+    alt="Vaca {{ $auction->cow->breed }} - {{ $auction->cow->weight }} kg"
+/>
 
         <table class="animal_table">
             <thead>
@@ -175,6 +187,9 @@
 <div class="bid">
     <form method="POST" action="{{ route('auction.placeBid', $auction->id) }}">
         @csrf
+
+
+
 
         <label for="bid_amount">Ingresa tu puja</label>
         <input

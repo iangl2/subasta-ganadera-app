@@ -22,7 +22,13 @@
         </div>
 
         <!-- FORM -->
-        <form class="form-grid" method="POST" action="{{ route('auctions.store') }}" >
+       <form 
+    class="form-grid" 
+    method="POST" 
+    action="{{ route('auctions.store') }}"
+    enctype="multipart/form-data"
+>
+
             @csrf
 
             <div class="input_box">
@@ -68,6 +74,16 @@
                 </select>
                 <label class="label">Sexo</label>
             </div>
+            <div class="input_box">
+    <input 
+        type="file" 
+        name="image" 
+        class="input-field"
+        accept="image/*"
+    >
+    <label class="label">Imagen de la vaca</label>
+</div>
+
 
             <div class="input_box submit-box">
                 <button class="input-submit">

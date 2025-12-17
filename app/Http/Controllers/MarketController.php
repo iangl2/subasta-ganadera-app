@@ -8,11 +8,50 @@ use Illuminate\Http\Request;
 
 class MarketController extends Controller
 {
-    public function market()
-    {
-        $auctions = Auction::with('cow')->paginate(6);
-        return view('market', compact('auctions'));
+
+  public function market(Request $request)
+{
+    $query = Auction::with('cow')
+        ->where('end_date', '>', now())
+        ->orderBy('created_at', 'desc');
+
+    // 🔎 Filtro por raza (textbox)
+    if ($request->filled('breed')) {
+        $query->whereHas('cow', function ($q) use ($request) {
+            $q->where('breed', 'ILIKE', '%' . $request->breed . '%');
+        });
     }
+
+    // ⚖️ Filtro por peso máximo (range o number)
+    if ($request->filled('weight')) {
+        $query->whereHas('cow', function ($q) use ($request) {
+            $q->where('weight', '>=', $request->weight);
+        });
+    }
+
+    // 🚻 Filtro por sexo
+    if ($request->filled('sex') && $request->sex !== 'any') {
+        $query->whereHas('cow', function ($q) use ($request) {
+            $q->where('sex', $request->sex);
+        });
+    }
+
+     // 💰 Filtro por precio máximo (highest bid)
+    if ($request->filled('max_price')) {
+        $query->whereRaw('
+            COALESCE(
+                (SELECT MAX(amount) FROM bids WHERE bids.auction_id = auctions.id),
+                auctions.starting_price
+            ) <= ?
+        ', [$request->max_price]);
+    }
+
+    $auctions = $query
+        ->paginate(6)
+        ->withQueryString(); // ⬅ mantiene filtros al paginar
+
+    return view('market', compact('auctions'));
+}
 
     public function auction($id)
     {
@@ -55,4 +94,5 @@ public function placeBid(Request $request, $id)
 
     return back()->with('success', 'Puja registrada correctamente.');
 }
+
 }

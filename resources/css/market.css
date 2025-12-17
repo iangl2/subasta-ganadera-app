@@ -213,3 +213,40 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+.page {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.page:hover {
+  background: #f0f0f0;
+}
+
+.page.active {
+  background: var(--verde);
+  color: white;
+  border-color: var(--verde);
+  cursor: default;
+}
+
+.page.disabled {
+  color: #aaa;
+  border-color: #eee;
+  cursor: not-allowed;
+}
