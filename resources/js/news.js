@@ -3,21 +3,21 @@ const noticiasData = [
     {
         id: 1,
         titulo: "Nueva tecnología de trazabilidad ganadera llega a Panamá",
-        imagen: "../img/tecnologia-ganadera.jpg",
+        imagen: "img/Img1.jpg",
         contenido: "El sector ganadero panameño da un paso importante hacia la modernización con la implementación de sistemas de trazabilidad digital. Esta tecnología permitirá a los productores monitorear cada animal desde su nacimiento hasta la comercialización, mejorando la transparencia y calidad del ganado.",
         fecha: "15 de Diciembre, 2025"
     },
     {
         id: 2,
         titulo: "Récord de asistencia en última subasta ganadera de Chiriquí",
-        imagen: "../img/subasta-record.jpg",
+        imagen: "/img/Img2.jpg",
         contenido: "La subasta ganadera celebrada el pasado fin de semana en Chiriquí rompió todos los récords de asistencia y ventas. Más de 500 ganaderos participaron en el evento, donde se comercializaron más de 1,200 cabezas de ganado bovino de alta calidad, generando un movimiento económico superior a los 2 millones de dólares.",
         fecha: "12 de Diciembre, 2025"
     },
     {
         id: 3,
         titulo: "Programa de mejoramiento genético beneficia a pequeños productores",
-        imagen: "../img/mejoramiento-genetico.jpg",
+        imagen: "/img/Img3.jpg",
         contenido: "El Ministerio de Desarrollo Agropecuario lanza un ambicioso programa de mejoramiento genético bovino dirigido a pequeños y medianos productores. La iniciativa incluye acceso a semen de toros de razas puras como Brahman y Angus, capacitación técnica y asistencia veterinaria especializada.",
         fecha: "10 de Diciembre, 2025"
     },
@@ -29,19 +29,19 @@ const noticiasRecomendadasData = [
     {
         id: 7,
         titulo: "Consejos para preparar su ganado antes de una subasta",
-        imagen: "../img/preparacion-ganado.jpg",
+        imagen: "/img/Img4.jpg",
         fecha: "1 de Diciembre, 2025"
     },
     {
         id: 8,
         titulo: "La importancia de la vacunación en el ganado bovino",
-        imagen: "../img/vacunacion-ganado.jpg",
+        imagen: "/img/Img5.jpg",
         fecha: "28 de Noviembre, 2025"
     },
     {
         id: 9,
         titulo: "Tendencias del mercado ganadero para el 2026",
-        imagen: "../img/tendencias-2026.jpg",
+        imagen: "../img/Img6.jpg",
         fecha: "25 de Noviembre, 2025"
     },
     
